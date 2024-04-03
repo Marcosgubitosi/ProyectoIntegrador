@@ -1,1 +1,3 @@
 datos = {}
+
+module.exports = datos;
