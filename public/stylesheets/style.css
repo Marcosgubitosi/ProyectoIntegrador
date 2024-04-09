@@ -1,11 +1,17 @@
+* {
+  font: 16px "Monaco";
+  color: black
+}
 
 
-
+a {
+  color: rgb(92, 91, 91);
+  font: 20px "Georgia"
+}
 
 .nombre {
   font: 40px 'Copperplate';
   color: red
 }
-
 
 
