@@ -1,4 +1,4 @@
-const productos = require('../db/index');
+const datos = require('../db/index');
 
 
 
