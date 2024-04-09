@@ -3,6 +3,16 @@
   color: black
 }
 
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: lightgrey;
+  color: black;
+}
+
+.main-header {
+  background-color: white;
+}
 
 a {
   color: rgb(92, 91, 91);
