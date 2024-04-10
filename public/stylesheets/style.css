@@ -1,11 +1,13 @@
 * {
-  font: 16px "Monaco";
-  color: black
+  font: 10px "Monaco";
+  color: black;
+  box-sizing: border-box;
 }
 
 body {
   background-color: lightgrey;
   color: black;
+  font-size: 10px;
 }
 
 .main-header {
@@ -14,7 +16,7 @@ body {
 
 a {
   color: rgb(92, 91, 91);
-  font: 20px "Georgia"
+  font: 15px "Georgia"
 }
 
 .logout {
