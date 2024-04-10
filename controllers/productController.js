@@ -6,6 +6,11 @@ const productController = {
             lista: datos.productos,
             mensaje: "Productos"
         })
+    },
+    todos: function(req,res){
+        return res.render('todosproductos',{
+            lista: datos.productos
+        })
     }
 }
 

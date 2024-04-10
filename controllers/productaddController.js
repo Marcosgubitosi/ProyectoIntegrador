@@ -2,11 +2,11 @@ const datos = require('../db/index');
 
 const prodaddController = {
     index: function(req,res){
-        return res.render('productAdd',{
+        return res.render('product-add',{
             lista: datos.productos,
             mensaje: "Productos"
         })
     }
 }
 
-module.exports = loginController;
+module.exports = prodaddController;

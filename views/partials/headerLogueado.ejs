@@ -6,7 +6,7 @@
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
 					<a href="/" class="main-header_home-link">
-						<img src="./public/images/logo-mercado-liebre.svg">
+						<h1 class="nombre"> Motor Market </h1>
 					</a>
 				</div>
 	
@@ -18,10 +18,10 @@
 				</div>
 	
 				<div class="col-12 col-md-4">
-					<a class="main-header_credit-link">
+					<p class="main-header_credit-link">
 						<i class="fas fa-hand-holding-usd"></i>
-						Todas las opiniones en un solo lugar.
-					</a>
+						Todas las opiniones en un solo lugar.</p>
+				
 				</div>
 			</div>
 	
@@ -31,29 +31,23 @@
 	
 			<nav class="main-navbar">
 				<ul class="left-navbar">
-					<li><a href="index">Todos los productos</a></li>
-					<li><a href="product-add.html">Cargar productos</a></li>
+					<li><a href="../product/todos">Todos los productos</a></li>
+					<li><a href="../productAdd">Cargar productos</a></li>
 				</ul>
 	
 				<ul class="right-navbar">
-					<li><a href="profile">
-							Nombre del usuario <i class="fas fa-user"></i>
-						</a>
+					<li><a href=../profile"><%= lista.nombre %> <i class="fas fa-user"></i></a>
+	
+					
 					</li>
 					<li>
 						<form action="" method="post">
 							<button class="logout" type="submit">
-								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
+								<a href="../index">Cerrar sesión <i class="fas fa-sign-in-alt"></i></a>
 							</button>
 						</form>
 					</li>
-					<!-- Solo deslogueado <li>
-						<a href="register.html">Creá tu cuenta <i class="far fa-address-card"></i>
-						</a>
-					</li>
-					<li>
-						<a href="login.html">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-					</li> -->
+					
 				</ul>
 			</nav>
 		</div>

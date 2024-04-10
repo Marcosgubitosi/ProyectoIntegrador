@@ -6,7 +6,15 @@ const profileController = {
             lista: datos.usuario,
             mensaje: "Usuario"
         })
+    },
+    header: function (req,res) {
+        return res.render('headerLogueado',{
+            lista: datos.usuario,
+            mensaje: "Usuario"
+        })
+        
     }
 }
+
 
 module.exports = profileController;

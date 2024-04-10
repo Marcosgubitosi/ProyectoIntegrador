@@ -15,7 +15,7 @@ body {
 }
 
 a {
-  color: rgb(92, 91, 91);
+  color: rgb(255, 0, 0);
   font: 15px "Georgia"
 }
 
@@ -25,6 +25,10 @@ a {
 .nombre {
   font: 40px 'Copperplate';
   color: red
+}
+
+.main-header_credit-link{
+  font-size: 12px;
 }
 
 
