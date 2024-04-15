@@ -3,16 +3,9 @@ const datos = require('../db/index');
 const profileController = {
     index: function(req,res){
         return res.render('profile',{
-            lista: datos.usuario,
+            lista: datos,
             mensaje: "Usuario"
         })
-    },
-    header: function (req,res) {
-        return res.render('headerLogueado',{
-            lista: datos.usuario,
-            mensaje: "Usuario"
-        })
-        
     }
 }
 

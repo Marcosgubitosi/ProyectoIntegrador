@@ -2,7 +2,7 @@
 
 <body>
 	<!-- Header -->
-	<%- include('./partials/headerLogueado') %>
+	<%- include('./partials/header') %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -11,8 +11,8 @@
 			<div class="col-12">
 				<h2 class="products-title">Registrate</h2>
 			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// 
+			<!--Evitamos que se rompa al mandarlo a una ruta-->
+			<h2 class="col-12"> <i>///////////////////////////////////////// </i>
 				<form action="profile" method="GET" class="registration-form">
 					<label for="email">Email:</label>
 					<input type="email" id="email" name="email" ><br>

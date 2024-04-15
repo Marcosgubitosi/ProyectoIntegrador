@@ -6,17 +6,17 @@
 			<div class="col-12">
 				<h2 class="products-title">Todos los productos</h2>
 			</div>
-    <%  for( let i = 0; i < lista.length; i++ ) { %>
+    <%  for( let i = 0; i < lista.productos.length; i++ ) { %>
         <div class="col-12 col-sm-6 col-lg-3">
             <section class="product-box">
                 <a href="../product">
                     <figure class="product-box_image">
-                        <img src="<%= lista[i].imagen %>" alt="cafetera moulinex">
+                        <img src="<%= lista.productos[i].imagen %>" alt="cafetera moulinex">
                     </figure>
                     <article class="product-box_data">
-                        <h2><%= lista[i].nombre_producto %></h2>
-                        <p><%= lista[i].descripcion %></p>
-                        <p>Comentarios: <%= lista[i].comentarios.length %></p>
+                        <h2><%= lista.productos[i].nombre_producto %></h2>
+                        <p><%= lista.productos[i].descripcion %></p>
+                        <p>Comentarios: <%= lista.productos[i].comentarios.length %></p>
                     </article>
                 </a>
             </section>

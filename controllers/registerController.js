@@ -3,7 +3,7 @@ const datos = require('../db/index');
 const registerController = {
     index: function(req,res){
         return res.render('register',{
-            lista: datos.usuario,
+            lista: datos,
             mensaje: "Usuario"
         })
     }

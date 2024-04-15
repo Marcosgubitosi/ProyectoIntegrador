@@ -10,7 +10,7 @@ const datos = {
     productos: [
         {
             imagen: 'https://media.toyota.com.ar/a5b0d72b-55af-4553-b365-aca16a6a7be8.png',
-            nombre_producto: 'Toyota Corolla Cross',
+            nombre_producto: 'Toyota Corolla',
             descripcion: 'El Toyota Corolla Cross es un SUV compacto con un diseño elegante y versátil. Ofrece un interior espacioso, tecnología avanzada y opciones eficientes de motorización. Confortable en la ciudad y capaz en terrenos variados, es una opción popular para familias y aventuras urbanas.',
             comentarios: [{
                 nombre_usuario: 'ArmandoRojas',
@@ -73,7 +73,7 @@ const datos = {
         },
         {
             imagen:'https://acroadtrip.blob.core.windows.net/catalogo-imagenes/xl/RT_V_954423484bfa4837a2348a759b5cf69e.jpg',
-            nombre_producto: 'Volkswagen Tiguan',
+            nombre_producto: 'VW Tiguan',
             descripcion: 'El Volkswagen Tiguan es una SUV versátil y espaciosa, con un diseño moderno y características de seguridad avanzadas. Confortable en carretera y listo para la aventura, es el compañero perfecto para la familia.',
             comentarios: [{
                 nombre_usuario: 'ArmandoRojas',
@@ -115,7 +115,7 @@ const datos = {
         },
         {
             imagen: 'https://acroadtrip.blob.core.windows.net/catalogo-imagenes/xl/RT_V_e4109132de26436da739fd86d5b715d0.jpg',
-            nombre_producto: 'Mercedes-Benz Clase C',
+            nombre_producto: 'Mercedes-Benz C',
             descripcion: 'El Mercedes-Benz Clase C es un sedán de lujo con un diseño elegante y características de vanguardia. Confortable y sofisticado, ofrece un rendimiento excepcional y tecnología intuitiva.',
             comentarios: [{
                 nombre_usuario: 'ArmandoRojas',

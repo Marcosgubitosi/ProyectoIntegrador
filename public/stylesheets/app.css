@@ -179,6 +179,7 @@ hr {
   overflow: hidden;
   transition: 300ms;
   margin: 20px 0;
+  /* height: 300px; */
 }
 
 .product-box a {
@@ -187,6 +188,9 @@ hr {
 
 .product-box_image {
   border-bottom: 1px solid var(--light-gray);
+  height: 200px;
+  display: flex;
+  align-items: center;
 }
 
 .product-box_data {

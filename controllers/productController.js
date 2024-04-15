@@ -3,13 +3,18 @@ const datos = require('../db/index');
 const productController = {
     index: function(req,res){
         return res.render('product',{
-            lista: datos.productos,
+            lista: datos,
             mensaje: "Productos"
         })
     },
     todos: function(req,res){
         return res.render('todosproductos',{
-            lista: datos.productos
+            lista: datos
+        })
+    },
+    home: function(req,res){
+        return res.render('index',{
+            lista: datos
         })
     }
 }

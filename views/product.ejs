@@ -7,7 +7,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= lista[1].nombre_producto %></h2> 
+			<h2 class="products-title"><%= lista.productos[1].nombre_producto %></h2> 
 			<p class="product-detail-description">
 				<a href="productAdd">Editar</a>
 			</p>
@@ -15,25 +15,26 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src='<%= lista[1].imagen %>' alt="" class="product-detail-img">
+					<img src='<%= lista.productos[1].imagen %>' alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= lista[1].descripcion %></p>
+						<%= lista.productos[1].descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<%  for( let i = 0; i < lista[1].comentarios.length; i++ ) { %>
+						<%  for( let i = 0; i < lista.productos[1].comentarios.length; i++ ) { %>
 							<article>
-								<img src="<%= lista[1].comentarios[i].foto_perfil %>" alt="">
+								<img src="<%= lista.productos[1].comentarios[i].foto_perfil %>" alt="">
 								<div class="data">
 									<p class="user">
-									<strong> <a href="profile"><%= lista[1].comentarios[i].nombre_usuario %>:</a> </strong>
-									<%= lista[1].comentarios[i].texto %></p>
+									<strong> <a href="profile"><%= lista.productos[1].comentarios[i].nombre_usuario %>:</a> </strong>
+									<%= lista.productos[1].comentarios[i].texto %></p>
 								</div>
 							</article>
 							<% }  
 							%>
 						
 					</section>
+					<!--Evitamos que se rompa al mandarlo a una ruta-->
 					<form class="form" action="product" method="GET">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
