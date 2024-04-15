@@ -154,11 +154,12 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
+  background-image: url(/images/banner_autos.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   height: 100px;
+  margin-bottom: 100px;
 }
 
 
@@ -272,7 +273,7 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: black;
   font-size: 3.5em;
 }
 
