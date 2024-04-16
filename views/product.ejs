@@ -9,7 +9,7 @@
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= lista.productos[1].nombre_producto %></h2> 
 			<p class="product-detail-description">
-				<a href="productAdd">Editar</a>
+				<a href="../product/product-add">Editar</a>
 			</p>
 		</div>
 		<div class="product-detail">
@@ -26,7 +26,7 @@
 								<img src="<%= lista.productos[1].comentarios[i].foto_perfil %>" alt="">
 								<div class="data">
 									<p class="user">
-									<strong> <a href="profile"><%= lista.productos[1].comentarios[i].nombre_usuario %>:</a> </strong>
+									<strong> <a href="../profile"><%= lista.productos[1].comentarios[i].nombre_usuario %>:</a> </strong>
 									<%= lista.productos[1].comentarios[i].texto %></p>
 								</div>
 							</article>
@@ -35,7 +35,7 @@
 						
 					</section>
 					<!--Evitamos que se rompa al mandarlo a una ruta-->
-					<form class="form" action="product" method="GET">
+					<form class="form" action="../product" method="GET">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>

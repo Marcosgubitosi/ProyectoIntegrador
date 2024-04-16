@@ -4,7 +4,6 @@ const productController = {
     index: function(req,res){
         return res.render('product',{
             lista: datos,
-            mensaje: "Productos"
         })
     },
     todos: function(req,res){
@@ -12,8 +11,13 @@ const productController = {
             lista: datos
         })
     },
-    home: function(req,res){
-        return res.render('index',{
+    searchresults: function(req,res){
+        return res.render('searchresults',{
+            lista: datos
+        })
+    },
+    productAdd: function(req,res){
+        return res.render('product-add',{
             lista: datos
         })
     }
