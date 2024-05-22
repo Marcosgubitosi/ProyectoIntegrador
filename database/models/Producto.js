@@ -21,10 +21,12 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.STRING
         },
         createdAt: {
-            type: dataTypes.DATE
+            type: dataTypes.DATE,
+            field: 'createdAt'
         },
         updatedAt: {
-            type: dataTypes.DATE
+            type: dataTypes.DATE,
+            field: 'updatedAt'
         }
     }
 

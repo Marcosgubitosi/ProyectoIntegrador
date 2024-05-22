@@ -10,8 +10,8 @@ module.exports = function (sequelize, dataTypes) {
         email: {
             type: dataTypes.STRING(50)
         },
-        contraseña: {
-            type: dataTypes.STRING(50)
+        contrasenia: {
+            type: dataTypes.STRING(100)
         },
         fecha_nacimiento: {
             type: dataTypes.DATE
@@ -23,10 +23,12 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.STRING
         },
         createdAt: {
-            type: dataTypes.DATE
+            type: dataTypes.DATE,
+            field: 'createdAt'
         },
         updatedAt: {
-            type: dataTypes.DATE
+            type: dataTypes.DATE,
+            field: 'updatedAt'
         }
     }
 
