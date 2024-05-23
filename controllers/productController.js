@@ -1,4 +1,5 @@
-const datos = require('../db/index');
+//const datos = require('../db/index');
+const datos = require("../database/models");
 
 const productController = {
     index: function(req,res){
@@ -20,6 +21,15 @@ const productController = {
         return res.render('product-add',{
             lista: datos
         })
+    },
+    productAdd: function(req,res){
+        datos.Producto.findAll()
+        .then(function (results){
+            return res.render('product-add', {productos: results})
+        })
+        .catch(function (error) {
+            return console.log(error);;
+        });
     },
     processProductAdd: function(req, res) {
         let form = req.body;
