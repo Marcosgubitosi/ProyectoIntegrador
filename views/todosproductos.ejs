@@ -1,7 +1,11 @@
 <%- include('./partials/head') %>
 <body>
-	<%- include('./partials/header') %>
-    <div class="container products-wrapper">
+    <% if (locals.user != undefined) { %>
+        <%- include('./partials/headerLogueado') %>
+    <% } else { %>
+        <%- include('./partials/header') %>
+    <% } %> 
+        <div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Todos los productos</h2>

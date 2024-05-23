@@ -36,16 +36,16 @@
 				</ul>
 	
 				<ul class="right-navbar">
-					<li><a href=../profile> <i class="fas fa-user"></i></a></li>
-					<li>
-						<form action="" method="post">
-							<button class="logout" type="submit">
-								<a href="../index">Cerrar sesión <i class="fas fa-sign-in-alt"></i></a>
-							</button>
-						</form>
-					</li>
-					
-				</ul>
+                    <li><a href=../profile> <%= locals.user.email %> <i class="fas fa-user"></i></a></li>
+                    <li>
+                        <form action="" method="post">
+                            <button class="logout" type="submit">
+                                <a href="../index">Cerrar sesión <i class="fas fa-sign-in-alt"></i></a>
+                            </button>
+                        </form>
+                    </li>
+                    
+                </ul>
 			</nav>
 		</div>
 	</header>

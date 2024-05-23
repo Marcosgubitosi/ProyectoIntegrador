@@ -46,7 +46,7 @@ const productController = {
                 nombre_producto: form.nombre_producto,
                 descripcion_producto: form.descripcion,
             };
-            return res.redirect('/product');
+            return res.redirect('/');
         })
         .catch(error=>console.log(error))
     },

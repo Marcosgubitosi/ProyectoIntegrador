@@ -63,7 +63,7 @@ const profileController = {
             if (user) {
                 let check = bcrypt.compareSync(form.contrasenia, user.contrasenia);
                 if (check) {
-                    req.session.profile = {
+                    req.session.user = {
                         email: user.email,
                         fecha_nacimiento: user.fecha_nacimiento,
                         dni: user.dni,
