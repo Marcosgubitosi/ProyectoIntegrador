@@ -7,11 +7,6 @@ const productController = {
             lista: datos,
         })
     },
-    todos: function(req,res){
-        return res.render('todosproductos',{
-            lista: datos
-        })
-    },
     searchresults: function(req,res){
         return res.render('searchresults',{
             lista: datos
@@ -50,6 +45,17 @@ const productController = {
         })
         .catch(error=>console.log(error))
     },
+    todos: function(req,res){
+        datos.Producto.findAll()
+        .then(function (results){
+            console.log(results);
+
+            return res.render('todosproductos', {productos: results})
+        })
+        .catch(function (error) {
+            return console.log(error);;
+        });
+    }
 }
 
 module.exports = productController;
