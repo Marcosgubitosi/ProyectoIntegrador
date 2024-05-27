@@ -37,6 +37,7 @@ const productController = {
         .then(function(result) {
             // console.log(result)
             req.session.product = {
+                // hay que encontrar una manera para mandar el usuario 
                 nombre_archivo_producto: form.imagen,
                 nombre_producto: form.nombre_producto,
                 descripcion_producto: form.descripcion,
@@ -46,16 +47,21 @@ const productController = {
         .catch(error=>console.log(error))
     },
     todos: function(req,res){
-        datos.Producto.findAll()
+        datos.Producto.findAll({
+            include: [
+                {association: "usuario"}
+            ]
+        })
         .then(function (results){
             console.log(results);
-
+            //return res.send(results)      es para probar a ver si se manda
             return res.render('todosproductos', {productos: results})
         })
         .catch(function (error) {
             return console.log(error);;
         });
     }
+   
 }
 
 module.exports = productController;

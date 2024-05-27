@@ -54,7 +54,7 @@ const profileController = {
     },
     processLogin: function(req, res) {
         let form = req.body;
-        // console.log(form);
+        console.log(form);
         datos.Usuario.findOne(
             { 
                 where: { email: form.email } 
