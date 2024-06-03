@@ -28,23 +28,28 @@ const productController = {
     },
     processProductAdd: function(req, res) {
         let form = req.body;
-
-        datos.Producto.create({
-            nombre_archivo_producto: form.imagen,
-            nombre_producto: form.nombre_producto,
-            descripcion_producto: form.descripcion,
-        })
-        .then(function(result) {
-            // console.log(result)
-            req.session.product = {
-                // hay que encontrar una manera para mandar el usuario 
+        const { validationResult } = require('express-validator')
+        let errors = validationResult(req);
+        if (errors.isEmpty()){
+            datos.Producto.create({
                 nombre_archivo_producto: form.imagen,
                 nombre_producto: form.nombre_producto,
                 descripcion_producto: form.descripcion,
-            };
-            return res.redirect('/');
-        })
-        .catch(error=>console.log(error))
+            })
+            .then(function(result) {
+                // console.log(result)
+                req.session.product = {
+                    // hay que encontrar una manera para mandar el usuario 
+                    nombre_archivo_producto: form.imagen,
+                    nombre_producto: form.nombre_producto,
+                    descripcion_producto: form.descripcion,
+                };
+                return res.redirect('/');
+            })
+            .catch(error=>console.log(error))
+        }else {
+            res.render('product-add', { errors: errors.mapped(), old: req.body });
+        }
     },
     todos: function(req,res){
         datos.Producto.findAll({
