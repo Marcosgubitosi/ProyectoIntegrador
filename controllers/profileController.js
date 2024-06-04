@@ -2,6 +2,8 @@
 
 const datos = require("../database/models");
 const bcrypt = require('bcryptjs');
+const { validationResult } = require('express-validator')
+
 
 const profileController = {
     profile: function(req,res){
@@ -52,38 +54,36 @@ const profileController = {
         })
         .catch(error=>console.log(error))
     },
-    processLogin: function(req, res) {
+    processLogin: function(req, res) { 
         let form = req.body;
-        console.log(form);
-        datos.Usuario.findOne(
-            { 
-                where: { email: form.email } 
-        })
-        .then(function(user) {
-            if (user) {
-                let check = bcrypt.compareSync(form.contrasenia, user.contrasenia);
-                if (check) {
+        let errors = validationResult(req);
+        if (errors.isEmpty()){
+            // console.log(form);
+            datos.Usuario.findOne(
+                { 
+                    where: { email: form.email } 
+            })
+            .then(function(user) {
+                // console.log(user);
                     req.session.user = {
                         email: user.email,
                         fecha_nacimiento: user.fecha_nacimiento,
                         dni: user.dni,
                         foto_perfil: user.foto_perfil,
                     };
-                    // console.log('Estas logueado');
                     return res.redirect('/');
-                } else {
-                    // console.log('Contraseña incorrecta'); 
-                    return res.render('login', { error: 'Contraseña incorrecta' });
-                }
-            } else {
-                // console.log('Email incorrecto'); 
-                return res.render('login', { error: 'Email incorrecto' });
-            }
-        })
-        .catch(function (error) {
-            return console.log(error);;
-        }); 
+                
+                })
+            .catch(function (error) {
+                return console.log(error);
+            }); 
+        }else{
+            //  return res.send(errors.mapped())
+            return res.render("login", {errors: errors.mapped(), old:req.body})
         }
+       
+        
+    }
     };
 
 

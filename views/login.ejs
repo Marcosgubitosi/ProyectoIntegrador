@@ -15,10 +15,14 @@
 			<h2 class="col-12">
 				<form action="/profile/login" method="POST">
 				<label for="email">Email:</label>
-				<input type="email" id="email" name="email" ><br>
-			
+				<input type="email" id="email" name="email" value="<%= locals.old !== undefined && old.email ? old.email: ""%>"><br>
+				<% if (locals.errors && errors.email) { %>
+					<p class = 'error'>  <%= errors.email.msg %></p> <% } %>
+				
 				<label for="contrasenia">Contraseña:</label>
 				<input type="password" id="contrasenia" name="contrasenia" ><br>
+				<% if (locals.errors && errors.contrasenia) { %>
+					<p class = 'error'>  <%= errors.contrasenia.msg %></p> <% } %>
 			
 				<input type="checkbox" id="recordarme" name="recordarme">
 				<label for="recordarme">Recordarme</label><br>
@@ -26,9 +30,6 @@
 				<button type="submit">Iniciar Sesión</button>
 			</form>
 			</h2>
-			<% if (error) { %>
-				<p> <%= error %> </p>
-			<% } %>
 
 
 			<%- include('./partials/footer') %>
