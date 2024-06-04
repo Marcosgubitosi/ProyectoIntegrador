@@ -18,10 +18,13 @@ const profileController = {
                         dni: user.dni,
                         foto_perfil: user.foto_perfil,
                     }
+                    res.render('profile', {user: req.session.user });
                 })
                 .catch(function (error) {
                     return console.log(error);
                 });
+        }else{
+            res.render('profile', {user: req.session.user });
         }
     },
     profileEdit: function (req, res) {
@@ -30,8 +33,11 @@ const profileController = {
         })
     },
     login: function (req, res) {
-        return res.render('login', { error: null });
-
+        if (req.session.user === undefined) {
+            return res.render('login', { error: null });
+        } else {
+            return res.redirect('/')
+        }
     },
     register: function (req, res) {
         datos.Usuario.findAll()
@@ -97,6 +103,7 @@ const profileController = {
             //  return res.send(errors.mapped())
             return res.render("login", { errors: errors.mapped(), old: req.body })
         }
+
     }
 };
 
