@@ -3,8 +3,8 @@ const router = express.Router();
 const profileController = require('../controllers/profileController');
 const bcrypt = require('bcryptjs');
 const datos = require("../database/models");
-
 let { body } = require("express-validator");
+
 let loginValidations = [
     body('email')
     .notEmpty().withMessage("Debes ingresar un email").bail()
