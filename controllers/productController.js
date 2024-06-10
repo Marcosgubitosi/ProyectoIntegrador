@@ -1,5 +1,6 @@
 //const datos = require('../db/index');
 const datos = require("../database/models");
+const { validationResult } = require('express-validator')
 
 const productController = {
     index: function(req,res){
@@ -32,7 +33,6 @@ const productController = {
     }},
     processProductAdd: function(req, res) {
         let form = req.body;
-        const { validationResult } = require('express-validator')
         let errors = validationResult(req);
         if (errors.isEmpty()){
             datos.Producto.create({
@@ -63,7 +63,7 @@ const productController = {
         })
         .then(function (results){
             console.log(results);
-            //return res.send(results)      es para probar a ver si se manda
+            //return res.send(results) es para probar a ver si se manda
             return res.render('todosproductos', {productos: results})
         })
         .catch(function (error) {
