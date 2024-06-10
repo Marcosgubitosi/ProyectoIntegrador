@@ -10,6 +10,9 @@ module.exports = function (sequelize, dataTypes) {
         email: {
             type: dataTypes.STRING(50)
         },
+        nombre_usuario:{
+            type: dataTypes.STRING(50)
+        },
         contrasenia: {
             type: dataTypes.STRING(100)
         },

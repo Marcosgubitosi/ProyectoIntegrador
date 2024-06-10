@@ -14,17 +14,18 @@ const profileController = {
                 .then(function (user) {
                     req.session.user = {
                         email: user.email,
+                        nombre_usuario: user.nombre_usuario,
                         fecha_nacimiento: user.fecha_nacimiento,
                         dni: user.dni,
                         foto_perfil: user.foto_perfil,
                     }
-                    res.render('profile', {user: req.session.user });
+                    res.render('profile', { user: req.session.user });
                 })
                 .catch(function (error) {
                     return console.log(error);
                 });
-        }else{
-            res.render('profile', {user: req.session.user });
+        } else {
+            res.render('profile', { user: req.session.user });
         }
     },
     profileEdit: function (req, res) {
@@ -40,38 +41,45 @@ const profileController = {
         }
     },
     register: function (req, res) {
-        datos.Usuario.findAll()
-            .then(function (results) {
-                return res.render("register", { usuarios: results })
-            })
-            .catch(function (error) {
-                return console.log(error);;
-            });
+        if (req.session.user === undefined) {
+            return res.render('register', { error: null });
+        } else {
+            return res.redirect('/')
+        }
     },
 
     processRegister: function (req, res) {
-        let form = req.body;
-        let passencriptada = bcrypt.hashSync(form.contrasenia, 10);
-        form.contrasenia = passencriptada
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            let form = req.body;
+            let passencriptada = bcrypt.hashSync(form.contrasenia, 10);
+            form.contrasenia = passencriptada
 
-        datos.Usuario.create({
-            email: form.email,
-            contrasenia: form.contrasenia,
-            fecha_nacimiento: form.fecha_nacimiento,
-            dni: form.dni,
-            foto_perfil: form.foto_perfil,
-        })
-            .then(function (result) {
-                // console.log(result)
-                req.session.profile = {
-                    email: form.email,
-                    fecha_nacimiento: form.fecha_nacimiento,
-                    dni: form.dni,
-                    foto_perfil: form.foto_perfil,
-                };
-                return res.redirect('/');
+            datos.Usuario.create({
+                email: form.email,
+                nombre_usuario: form.nombre_usuario,
+                contrasenia: form.contrasenia,
+                fecha_nacimiento: form.fecha_nacimiento,
+                dni: form.dni,
+                foto_perfil: form.foto_perfil,
             })
-            .catch(error => console.log(error))
+                .then(function (result) {
+                    // console.log(result)
+                    req.session.profile = {
+                        email: form.email,
+                        nombre_usuario: form.nombre_usuario,
+                        fecha_nacimiento: form.fecha_nacimiento,
+                        dni: form.dni,
+                        foto_perfil: form.foto_perfil,
+                    };
+                    return res.redirect('/');
+                })
+                .catch(error => console.log(error))
+        }
+        else {
+            //  return res.send(errors.mapped())
+            return res.render("register", { errors: errors.mapped(), old: req.body })
+        }
     },
     processLogin: function (req, res) {
         let form = req.body;
@@ -86,6 +94,7 @@ const profileController = {
                     // console.log(user);
                     req.session.user = {
                         email: user.email,
+                        nombre_usuario: user.nombre_usuario,
                         fecha_nacimiento: user.fecha_nacimiento,
                         dni: user.dni,
                         foto_perfil: user.foto_perfil,
@@ -105,7 +114,7 @@ const profileController = {
         }
 
     },
-    logout: function(req,res){
+    logout: function (req, res) {
         req.session.destroy();
         res.clearCookie('userEmail')
         return res.redirect("/")
