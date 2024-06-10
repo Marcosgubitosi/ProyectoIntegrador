@@ -104,6 +104,11 @@ const profileController = {
             return res.render("login", { errors: errors.mapped(), old: req.body })
         }
 
+    },
+    logout: function(req,res){
+        req.session.destroy();
+        res.clearCookie('userEmail')
+        return res.redirect("/")
     }
 };
 

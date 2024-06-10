@@ -39,5 +39,6 @@ router.post('/login', loginValidations, profileController.processLogin);
 router.get('/profileEdit', profileController.profileEdit)
 router.get('/register', profileController.register)
 router.post('/register', profileController.processRegister);
+router.post('/logout',profileController.logout)
 
 module.exports = router;

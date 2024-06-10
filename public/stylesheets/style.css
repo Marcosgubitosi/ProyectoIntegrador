@@ -19,9 +19,7 @@ a {
   font: 15px "Georgia"
 }
 
-.logout {
-  color: rgb(92, 91, 91)
-}
+
 .nombre {
   font: 40px 'Copperplate';
   color: red
@@ -33,6 +31,11 @@ a {
 
 .error {
   color:red
+}
+
+.logout {
+  color:red;
+  font: 15px "Georgia"
 }
 
 

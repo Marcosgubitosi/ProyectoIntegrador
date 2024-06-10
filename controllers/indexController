@@ -1,10 +1,20 @@
-const datos = require('../db/index');
+const datos = require('../database/models');
 
 const indexController = {
    home: function(req,res){
-    return res.render('index',{
-        lista: datos
+    datos.Producto.findAll({
+        include: [
+            {association: "usuario"}
+        ]
     })
+    .then(function (results){
+        console.log(results);
+        //return res.send(results) es para probar a ver si se manda
+        return res.render('index', {lista: results})
+    })
+    .catch(function (error) {
+        return console.log(error);;
+    });
     }
 }
 

@@ -20,17 +20,17 @@
 				<h2 class="products-title">Novedades</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<%  for( let i = (lista.productos.length - 4); i < lista.productos.length; i++ ) { %>
+			<%  for( let i = (lista.length - 4); i < lista.length; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
 						<a href="../product">
-							<figure class="product-box_image">
-								<img src="<%= lista.productos[i].imagen %>" >
-							</figure>
+							<!-- <figure class="product-box_image"> -->
+								<img src="<%= lista[i].nombre_archivo_producto %>" >
+							<!-- </figure> -->
 							<article class="product-box_data">
-								<h2><%= lista.productos[i].nombre_producto %></h2>
-								<p><%= lista.productos[i].descripcion %></p>
-								<p>Comentarios: <%= lista.productos[i].comentarios.length %></p>
+								<h2><%= lista[i].nombre_producto %></h2>
+								<p><%= lista[i].descripcion_producto %></p>
+								<!-- <p>Comentarios: Falta poner el comentario </p> -->
 							</article>
 						</a>
 					</section>
@@ -53,12 +53,12 @@
 					<section class="product-box">
 						<a href="../product">
 							<figure class="product-box_image">
-								<img src="<%= lista.productos[i].imagen %>" alt="cafetera moulinex">
+								<img src="<%= lista[i].nombre_archivo_producto %>" alt="cafetera moulinex">
 							</figure>
 							<article class="product-box_data">
-								<h2><%= lista.productos[i].nombre_producto %></h2>
-								<p><%= lista.productos[i].descripcion %></p>
-								<p>Comentarios: <%= lista.productos[i].comentarios.length %></p>
+								<h2><%= lista[i].nombre_producto %></h2>
+								<p><%= lista[i].descripcion_producto %></p>
+								<!-- <p>Comentarios: falta poner comentario </p> -->
 							</article>
 						</a>
 					</section>
