@@ -11,7 +11,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= lista.productos[1].nombre_producto %></h2> 
+			<h2 class="products-title"><%= info.nombre_producto %></h2> 
 			<p class="product-detail-description">
 				<a href="../product/product-add">Editar</a>
 			</p>
@@ -19,23 +19,23 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src='<%= lista.productos[1].imagen %>' alt="" class="product-detail-img">
+					<img src='<%= info.nombre_archivo_producto %>' alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= lista.productos[1].descripcion %></p>
+						<%= info.descripcion_producto %></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<%  for( let i = 0; i < lista.productos[1].comentarios.length; i++ ) { %>
+						<%  for( let i = 0; i < info.comentario.length; i++ ) { %>
 							<article>
-								<img src="<%= lista.productos[1].comentarios[i].foto_perfil %>" alt="">
+								<!-- <img src="%= info.comentario[i].foto_perfil %>" alt=""> -->
 								<div class="data">
 									<p class="user">
-									<strong> <a href="../profile"><%= lista.productos[1].comentarios[i].nombre_usuario %>:</a> </strong>
-									<%= lista.productos[1].comentarios[i].texto %></p>
+									<!-- <strong> <a href="../profile">< info.comentario[i].email %>:</a> </strong> -->
+									<%= info.comentario[i].comentario %></p>
 								</div>
 							</article>
-							<% }  
-							%>
+							<% } %>
+							
 						
 					</section>
 					<!--Evitamos que se rompa al mandarlo a una ruta-->

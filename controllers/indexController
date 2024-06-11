@@ -2,13 +2,14 @@ const datos = require('../database/models');
 
 const indexController = {
    home: function(req,res){
-    datos.Producto.findAll({
+    let filtrado = {
         include: [
             {association: "usuario"}
         ]
-    })
+    }
+    datos.Producto.findAll(filtrado)
     .then(function (results){
-        console.log(results);
+        //console.log(results);
         //return res.send(results) es para probar a ver si se manda
         return res.render('index', {lista: results})
     })

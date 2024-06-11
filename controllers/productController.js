@@ -1,17 +1,43 @@
 //const datos = require('../db/index');
 const datos = require("../database/models");
+const {Association} = require('sequelize')
 const { validationResult } = require('express-validator')
 
 const productController = {
-    index: function(req,res){
-        return res.render('product',{
-            lista: datos,
-        })
+    detalle: function(req,res){
+       let idd = req.params.productoID;
+       let filtrado ={
+        include: [
+            {association: "usuario"},
+            {association: "comentario"}
+        ]}
+    
+       datos.Producto.findByPk(idd, filtrado)
+            .then(function (producto) {
+                //res.send(producto)
+                res.render('product', {info: producto})
+            })
+            .catch(function (error) {
+                return console.log(error);
+            });
+    //    for (let i = 0; i <datos.Producto.length; i++){
+    //     if(idd == datos.Producto[i].producto_id){
+    //         return res.render("product",{lista:datos.Producto[i]})
+    //     }}
+    //     if (idd > datos.Producto.length){
+    //         return res.send("no hay ningun producto con este id")
+    //     }
     },
+
     searchresults: function(req,res){
+        let queryString = location.search
+        let busqueda = new URLSearchParams(queryString)
+        let nombreBuscar = busqueda.get("search")
+       //console.log(nombreBuscar)
         return res.render('searchresults',{
             lista: datos
         })
+        
     },
     productAdd: function(req,res){
         return res.render('product-add',{
@@ -62,7 +88,7 @@ const productController = {
             ]
         })
         .then(function (results){
-            console.log(results);
+            //console.log(results);
             //return res.send(results) es para probar a ver si se manda
             return res.render('todosproductos', {productos: results})
         })

@@ -15,7 +15,7 @@ let productValidations = [
   
 ]
 
-router.get('/', productController.index)
+router.get('/id/:productoID', productController.detalle)
 router.get('/searchresults', productController.searchresults)
 router.get('/todos', productController.todos)
 router.get('/add', productController.productAdd)
