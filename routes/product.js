@@ -20,6 +20,9 @@ router.get('/searchresults', productController.searchresults)
 router.get('/todos', productController.todos)
 router.get('/add', productController.productAdd)
 router.post('/add', productValidations, productController.processProductAdd)
+router.get('/comentario', productController.comentario)
+router.get('/comentario', productController.processComentario)
+
 
 
 module.exports = router;

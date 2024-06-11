@@ -35,11 +35,6 @@ const productController = {
         
     },
     productAdd: function(req,res){
-        return res.render('product-add',{
-            lista: datos
-        })
-    },
-    productAdd: function(req,res){
         if(req.session.user === undefined) {
             //return res.send("tenes que logearte para poder agregar productos")
             return res.redirect('/profile/login')
@@ -91,6 +86,30 @@ const productController = {
         .catch(function (error) {
             return console.log(error);;
         });
+    },
+    comentario: function(req,res){
+        if(req.session.user === undefined) {
+            //return res.send("tenes que logearte para poder agregar comentarios")
+            return res.redirect('/profile/login')
+        }else{
+        datos.Producto.findAll()
+        .then(function (results){
+            return res.render('product', {productos: results})
+        })
+        .catch(function (error) {
+            return console.log(error);;
+        });
+    }
+    },
+    processComentario: function(req,res){
+        let form = req.body;
+        let errors = validationResult(req);
+        if (errors.isEmpty()){
+            datos.Comentario.create({
+                comentario: form.comentario
+            })
+        }
+
     }
    
 }
