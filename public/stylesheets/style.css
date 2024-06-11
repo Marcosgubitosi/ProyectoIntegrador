@@ -19,6 +19,13 @@ a {
   font: 15px "Georgia"
 }
 
+.medio{
+  display: flexbox;
+}
+
+.saludo{
+  font-size: 30px;
+}
 
 .nombre {
   font: 40px 'Copperplate';

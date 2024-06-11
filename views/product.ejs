@@ -27,10 +27,10 @@
 					<section class="comments">
 						<%  for( let i = 0; i < info.comentario.length; i++ ) { %>
 							<article>
-								<!-- <img src="%= info.comentario[i].foto_perfil %>" alt=""> -->
+								<a href="/profile/id/<%= info.comentario[i].usuario.id %>"><img src="<%= info.comentario[i].usuario.foto_perfil %>" alt=""></a>
 								<div class="data">
 									<p class="user">
-									<!-- <strong> <a href="../profile">< info.comentario[i].email %>:</a> </strong> -->
+									<strong> <a href="/profile/id/<%= info.comentario[i].usuario.id %>"><%= info.comentario[i].usuario.email %>:</a> </strong>
 									<%= info.comentario[i].comentario %></p>
 								</div>
 							</article>

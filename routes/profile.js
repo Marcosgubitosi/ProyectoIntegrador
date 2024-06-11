@@ -58,7 +58,7 @@ let registerValidations = [
 
 ]
 
-router.get('/', profileController.profile)
+router.get('/id/:user_id', profileController.profile)
 
 router.get('/login', profileController.login)
 router.post('/login', loginValidations, profileController.processLogin);

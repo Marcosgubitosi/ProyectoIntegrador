@@ -4,13 +4,14 @@ const indexController = {
    home: function(req,res){
     let filtrado = {
         include: [
-            {association: "usuario"}
+            {association: "usuario"},
+            {association: "comentario"}
         ]
     }
     datos.Producto.findAll(filtrado)
     .then(function (results){
-        //console.log(results);
-        //return res.send(results) es para probar a ver si se manda
+        // console.log(results);
+        // return res.send(results)
         return res.render('index', {lista: results})
     })
     .catch(function (error) {

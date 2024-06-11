@@ -7,26 +7,46 @@ const { validationResult } = require('express-validator')
 
 const profileController = {
     profile: function (req, res) {
-        if (req.cookies.userEmail && !req.session.user) {
-            datos.Usuario.findOne({
-                where: { email: req.cookies.userEmail }
-            })
-                .then(function (user) {
-                    req.session.user = {
-                        email: user.email,
-                        nombre_usuario: user.nombre_usuario,
-                        fecha_nacimiento: user.fecha_nacimiento,
-                        dni: user.dni,
-                        foto_perfil: user.foto_perfil,
-                    }
-                    res.render('profile', { user: req.session.user });
-                })
-                .catch(function (error) {
-                    return console.log(error);
-                });
-        } else {
-            res.render('profile', { user: req.session.user });
-        }
+        // if (req.cookies.userEmail && !req.session.user) {
+        //     datos.Usuario.findOne({
+        //         where: { email: req.cookies.userEmail }
+        //     })
+        //         .then(function (user) {
+        //             req.session.user = {
+        //                 email: user.email,
+        //                 nombre_usuario: user.nombre_usuario,
+        //                 fecha_nacimiento: user.fecha_nacimiento,
+        //                 dni: user.dni,
+        //                 foto_perfil: user.foto_perfil,
+        //             }
+        //             res.send(user)
+        //             // return res.render('profile', { user: req.session.user });
+        //         })
+        //         .catch(function (error) {
+        //             return console.log(error);
+        //         });
+        // } else {
+        //     res.send(datos.Usuario)
+        //     // res.render('profile', { user: req.session.user });
+        // }
+            let id = req.params.user_id;
+            let filtrado ={
+             include: [
+                 {association: "producto",
+                    include: [{association: "comentario"}]
+                 },
+                 {association: "comentario"}
+             ]}
+         
+            datos.Usuario.findByPk(id, filtrado)
+                 .then(function (usuario) {
+                    //  console.log(usuario);
+                    // res.send(usuario)
+                     res.render('profile', {datos: usuario})
+                 })
+                 .catch(function (error) {
+                     return console.log(error);
+                 });
     },
     profileEdit: function (req, res) {
         return res.render('profile-edit', {
@@ -93,6 +113,7 @@ const profileController = {
                 .then(function (user) {
                     // console.log(user);
                     req.session.user = {
+                        id: user.id,
                         email: user.email,
                         nombre_usuario: user.nombre_usuario,
                         fecha_nacimiento: user.fecha_nacimiento,

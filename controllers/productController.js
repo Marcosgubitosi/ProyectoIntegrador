@@ -9,24 +9,19 @@ const productController = {
        let filtrado ={
         include: [
             {association: "usuario"},
-            {association: "comentario"}
+            {association: "comentario",  
+            include: [{association: "usuario"}]
+        }
         ]}
     
        datos.Producto.findByPk(idd, filtrado)
             .then(function (producto) {
-                //res.send(producto)
+                // res.send(producto)
                 res.render('product', {info: producto})
             })
             .catch(function (error) {
                 return console.log(error);
             });
-    //    for (let i = 0; i <datos.Producto.length; i++){
-    //     if(idd == datos.Producto[i].producto_id){
-    //         return res.render("product",{lista:datos.Producto[i]})
-    //     }}
-    //     if (idd > datos.Producto.length){
-    //         return res.send("no hay ningun producto con este id")
-    //     }
     },
 
     searchresults: function(req,res){
@@ -84,12 +79,13 @@ const productController = {
     todos: function(req,res){
         datos.Producto.findAll({
             include: [
-                {association: "usuario"}
+                {association: "usuario"},
+                {association: "comentario"}
             ]
         })
         .then(function (results){
             //console.log(results);
-            //return res.send(results) es para probar a ver si se manda
+            // return res.send(results) 
             return res.render('todosproductos', {productos: results})
         })
         .catch(function (error) {
