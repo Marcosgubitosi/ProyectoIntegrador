@@ -23,15 +23,36 @@ const productController = {
                 return console.log(error);
             });
     },
-
     searchresults: function(req,res){
-        let queryString = location.search
-        let busqueda = new URLSearchParams(queryString)
-        let nombreBuscar = busqueda.get("search")
-       //console.log(nombreBuscar)
-        return res.render('searchresults',{
-            lista: datos
+        let queryString = req.query.search
+        let filtrado = {
+            include: [
+                {association: "usuario"},
+                {association: "comentario",  
+                include: [{association: "usuario"}]
+            }
+            ],
+            where: [{nombre_producto: queryString}]
+        }
+        datos.Producto.findOne(filtrado)
+        .then(function(resultado){
+            console.log(resultado)
+            if (resultado != undefined){
+                return res.render('search-results', {datos: resultado})
+            }else {
+                return res.send("no hay resultados de tu busqueda")
+            }
         })
+
+
+
+    //     let queryString = location.search
+    //     let busqueda = new URLSearchParams(queryString)
+    //     let nombreBuscar = busqueda.get("search")
+    //    //console.log(nombreBuscar)
+    //     return res.render('searchresults',{
+    //         lista: datos
+    //     })
         
     },
     productAdd: function(req,res){
