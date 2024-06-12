@@ -12,6 +12,7 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= info.nombre_producto %></h2> 
+
 			<p class="product-detail-description">
 				<a href="../product/product-add">Editar</a>
 			</p>
@@ -20,6 +21,8 @@
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src='<%= info.nombre_archivo_producto %>' alt="" class="product-detail-img">
+					<a href="/profile/id/<%= info.usuario.id %>" class="product-detail-description">
+						<%= info.usuario.email %></a>
 					<p class="product-detail-description">
 						<%= info.descripcion_producto %></p>
 				</article>
