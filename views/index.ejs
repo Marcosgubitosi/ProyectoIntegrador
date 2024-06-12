@@ -27,6 +27,7 @@
 							<figure class="product-box_image"> 
 								<img src="<%= lista[i].nombre_archivo_producto %>" >
 							</figure>
+							<a href="/profile/id/<%= lista[i].usuario_id%>"> <%= lista[i].usuario.email%></a>
 							<!-- NO PODEMOS PORQ UNOS PRODUCTOS NO TIENEN USUARIO<a href="/profile/id/%= lista[i].usuario_id%>"> %= lista[i].usuario.email%></a> -->
 							<article class="product-box_data">
 								<h2><%= lista[i].nombre_producto %></h2>
