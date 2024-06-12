@@ -38,6 +38,7 @@ app.use(function(req, res, next) {
 });
 app.use(function(req, res, next) {
   if (req.session.user != undefined) {
+    //res.send(req.session.user)
     res.locals.user = req.session.user
     // console.log(res.locals.user);
      }

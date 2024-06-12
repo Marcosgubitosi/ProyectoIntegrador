@@ -1,0 +1,45 @@
+<%- include('./partials/head') %>
+
+<body>
+	<!-- Header -->
+	<% if (locals.user != undefined) { %>
+        <%- include('./partials/headerLogueado') %>
+    <% } else { %>
+        <%- include('./partials/header') %>
+    <% } %> 
+	<!-- /Header -->
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Modificar Productos</h2>
+			</div>
+			
+			<h2 class="col-12"> <i>///////////////////////////////////////// <br> 
+				<!--Evitamos que se rompa al mandarlo a una ruta-->
+				<form action="/product/add" method="POST" >
+					<label for="imagen">Imagen:</label>
+					<input type="text" id="imagen" name="imagen" value="<%= locals.old !== undefined && old.imagen ? old.imagen: "" %>"><br>
+					<% if (locals.errors && errors.imagen) { %>
+					<p class = 'error'>  <%= errors.imagen.msg %></p> <% } %>
+				
+					<label for="nombre_producto">Nombre del producto:</label>
+					<input type="text" id="nombre_producto" name="nombre_producto" value="<%= locals.old !== undefined && old.nombre_producto ? old.nombre_producto: "" %>"><br>
+					<% if (locals.errors && errors.nombre_producto) { %>
+					<p class = 'error'> <%= errors.nombre_producto.msg %></p> <% } %>
+						
+
+					<label for="descripcion">Descripción:</label>
+					<input type="text" id="descripcion" name="descripcion" value="<%= locals.old !== undefined && old.descripcion ? old.descripcion: "" %>"><br>
+					<% if (locals.errors && errors.descripcion) { %>
+					<p class = 'error'> <%= errors.descripcion.msg %></p> <% } %>
+				
+					<button type="submit">Guardar Cambios</button>
+				</form>
+
+				
+			<%- include('./partials/footer') %>
+</body>
+
+</html>

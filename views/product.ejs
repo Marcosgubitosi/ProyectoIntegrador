@@ -14,7 +14,12 @@
 			<h2 class="products-title"><%= info.nombre_producto %></h2> 
 
 			<p class="product-detail-description">
-				<a href="/product/add">Editar</a>
+			<% if (locals.user != undefined) { %>
+				<% if (locals.user.email == info.usuario.email) { %>
+				<a href="/product/add">Editar</a> 
+				<a href="/product/add">Borrar</a>
+				<% } %>
+			<% } %>
 			</p>
 		</div>
 		<div class="product-detail">
