@@ -36,31 +36,28 @@ const productController = {
         }
         datos.Producto.findOne(filtrado)
         .then(function(resultado){
-            console.log(resultado)
+            //console.log(resultado)
             if (resultado != undefined){
                 return res.render('search-results', {datos: resultado})
             }else {
-                return res.send("no hay resultados de tu busqueda")
+                return res.send("no hay resultados para su criterio de busqueda")
             }
         })
 
-
-
-    //     let queryString = location.search
-    //     let busqueda = new URLSearchParams(queryString)
-    //     let nombreBuscar = busqueda.get("search")
-    //    //console.log(nombreBuscar)
-    //     return res.render('searchresults',{
-    //         lista: datos
-    //     })
-        
     },
     productAdd: function(req,res){
+        let filtrado ={
+            include: [
+                {association: "usuario"},
+                {association: "comentario",  
+                include: [{association: "usuario"}]
+            }
+            ]}
         if(req.session.user === undefined) {
             //return res.send("tenes que logearte para poder agregar productos")
             return res.redirect('/profile/login')
         }else{
-        datos.Producto.findAll()
+        datos.Producto.findAll(filtrado)
         .then(function (results){
             return res.render('product-add', {productos: results})
         })
