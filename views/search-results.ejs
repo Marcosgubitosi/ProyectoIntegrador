@@ -25,16 +25,7 @@
 						<article class="product-box_data">
 							<h2><%= datos.nombre_producto %></h2>
 							<p><%= datos.descripcion_producto %></p>
-							<p>Comentarios: </p>
-							<%  for( let i = 0; i < datos.comentario.length; i++ ) { %>
-								<article>
-									<div class="data">
-										<p class="user">
-										<strong> <a href="/profile/id/<%= datos.comentario[i].usuario.id %>"><%= datos.comentario[i].usuario.email %>:</a> </strong>
-										<%= datos.comentario[i].comentario %></p>
-									</div>
-								</article>
-								<% } %> 
+							<p>Comentarios: <%= datos.comentario.length %> </p>
 						</article>
 					</a>
 				</section>

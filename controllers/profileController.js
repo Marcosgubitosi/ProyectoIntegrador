@@ -29,7 +29,7 @@ const profileController = {
         //     res.send(datos.Usuario)
         //     // res.render('profile', { user: req.session.user });
         // }
-            let id = req.params.user_id;
+            let idd = req.params.user_id;
             let filtrado ={
              include: [
                  {association: "producto",
@@ -38,7 +38,7 @@ const profileController = {
                  {association: "comentario"}
              ]}
          
-            datos.Usuario.findByPk(id, filtrado)
+            datos.Usuario.findByPk(idd, filtrado)
                  .then(function (usuario) {
                     //  console.log(usuario);
                     // res.send(usuario)

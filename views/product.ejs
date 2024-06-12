@@ -42,10 +42,17 @@
 						
 					</section>
 					<!--Evitamos que se rompa al mandarlo a una ruta-->
-					<form class="form" action="/product/comentario" method="POST">
-						<input class="form-input" type="text" name="comentario" placeholder="Agregar comentario">
+					<% if (locals.user != undefined) { %>
+					<form class="form" action="/product/id/<%= info.producto_id %>" method="POST">
+						<input class="form-input" type="text" name="comment" placeholder="Agregar comentario">
+						<% if (locals.errors && errors.comentario) { %>
+							<p class = 'error'>  <%= errors.comentario.msg %></p> <% } %>
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						
 					</form>
+					<% } else { %>
+						<p>Debes estar logueado para comentar</p>
+						<% } %>
 					<hr>
 				</div>
 			</div>

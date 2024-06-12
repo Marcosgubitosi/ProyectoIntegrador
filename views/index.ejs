@@ -27,7 +27,7 @@
 							<figure class="product-box_image"> 
 								<img src="<%= lista[i].nombre_archivo_producto %>" >
 							</figure>
-
+							<!-- NO PODEMOS PORQ UNOS PRODUCTOS NO TIENEN USUARIO<a href="/profile/id/%= lista[i].usuario_id%>"> %= lista[i].usuario.email%></a> -->
 							<article class="product-box_data">
 								<h2><%= lista[i].nombre_producto %></h2>
 								<p><%= lista[i].descripcion_producto %></p>
@@ -55,12 +55,13 @@
 						<a href="/product/id/<%= lista[i].producto_id%>">
 							<figure class="product-box_image">
 								<img src="<%= lista[i].nombre_archivo_producto %>" alt="cafetera moulinex">
-							</figure>
+							</figure></a>
 							<a href="/profile/id/<%= lista[i].usuario_id%>"> <%= lista[i].usuario.email%></a>
+							<a href="/product/id/<%= lista[i].producto_id%>">
 							<article class="product-box_data">
 								<h2><%= lista[i].nombre_producto %></h2>
 								<p><%= lista[i].descripcion_producto %></p>
-								<p>Comentarios: falta poner comentario </p>
+								<p>Comentarios:  <%= lista[i].comentario.length %> </p>
 							</article>
 						</a>
 					</section>
