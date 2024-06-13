@@ -17,7 +17,9 @@
 			<% if (locals.user != undefined) { %>
 				<% if (locals.user.email == info.usuario.email) { %>
 				<a href="/product/edit/<%= info.producto_id %>">Editar</a> 
-				<a href="/product/edit/<%= info.producto_id %>">Borrar</a>
+				<form action="/product/borrar/<%= info.producto_id %>" method="POST" >
+					<button type="submit">Borrar</button>
+				</form>
 				<% } %>
 			<% } %>
 			</p>

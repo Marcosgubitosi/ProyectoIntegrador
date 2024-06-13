@@ -174,7 +174,6 @@ const productController = {
             ]
         }
         if (req.session.user === undefined) {
-            //return res.send("tenes que logearte para poder agregar productos")
             return res.redirect('/profile/login')
         } else {
             datos.Producto.findByPk(idd, filtrado)
@@ -236,8 +235,39 @@ const productController = {
                 return console.log(error);
             });
         }
+    },
+    borrarProducto: function (req, res) {
+        let idd = req.params.productId
+        let filtrado = {
+            include: [
+                { association: "usuario" },
+                {
+                    association: "comentario",
+                    include: [{ association: "usuario" }]
+                }
+            ]
+        }
+        //res.send(datos.Producto.usuario_id)
+        datos.Producto.findByPk(idd, filtrado)
+        .then(function (producto) {
+            if (req.session.user.id == producto.usuario_id) {
+                datos.Producto.destroy({
+                    where:{producto_id: idd}
+                    })
+                    .then(function () {
+                        return res.redirect('/');
+                    })
+                    .catch(error => console.log(error))
+            }else {
+                    res.send('No podes borrar un producto que no sea tuyo')
+                    }}
+        )
+        .catch(function (error) {
+            return console.log(error);
+        })
     }
-
 }
+    
+
 
 module.exports = productController;

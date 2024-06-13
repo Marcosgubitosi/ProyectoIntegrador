@@ -34,6 +34,8 @@ router.post('/add', productValidations, productController.processProductAdd)
 router.get('/edit/:productId', productController.productEdit)
 router.post('/edit/:productId',productValidations, productController.processProductEdit)
 
+router.post('/borrar/:productId', productController.borrarProducto)
+
 
 
 
