@@ -189,10 +189,20 @@ const productController = {
             });
     }},
     processProductEdit: function (req, res) {
-        
         let idd = req.params.productId
         let form = req.body;
         let errors = validationResult(req);
+        let filtrado = {
+            include: [
+                { association: "usuario" },
+                {
+                    association: "comentario",
+                    include: [{ association: "usuario" }]
+                }
+            ]
+        }
+        //res.send(req.session)
+        // res.send(errors.mapped())
         //res.send(idd)
         if (errors.isEmpty()) {
             datos.Producto.update({
@@ -208,7 +218,21 @@ const productController = {
                 })
                 .catch(error => console.log(error))
         } else {
-            res.render('product-edit', { errors: errors.mapped(), old: req.body });
+            datos.Producto.findByPk(idd, filtrado)
+            .then(function (producto) {
+                //res.send(producto)
+                if (req.session.user.id == producto.usuario_id) {
+                    return res.render('product-edit', {
+                        info: producto,
+                        errors: errors.mapped()
+                    })
+                } else{
+                    res.send('No podes editar un producto que no sea tuyo')
+                }
+            })
+            .catch(function (error) {
+                return console.log(error);
+            });
         }
     }
 
