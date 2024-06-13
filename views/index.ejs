@@ -45,32 +45,32 @@
 			
 
 	<!-- Más vistos -->
-	<div class="container products-wrapper">
+	<!-- <div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Más vistos</h2>
 			</div>
-			<%  for( let i = 0; i < 4; i++ ) { %>
+			 for( let i = 0; i < 4; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/id/<%= lista[i].producto_id%>">
+						<a href="/product/id/%= lista[i].producto_id%>">
 							<figure class="product-box_image">
-								<img src="<%= lista[i].nombre_archivo_producto %>" alt="cafetera moulinex">
+								<img src=%= lista[i].nombre_archivo_producto %>" alt="cafetera moulinex">
 							</figure></a>
-							<a href="/profile/id/<%= lista[i].usuario_id%>"> <%= lista[i].usuario.email%></a>
-							<a href="/product/id/<%= lista[i].producto_id%>">
+							<a href="/profile/id/%= lista[i].usuario_id%>"> %= lista[i].usuario.email%></a>
+							<a href="/product/id/%= lista[i].producto_id%>">
 							<article class="product-box_data">
-								<h2><%= lista[i].nombre_producto %></h2>
-								<p><%= lista[i].descripcion_producto %></p>
-								<p>Comentarios:  <%= lista[i].comentario.length %> </p>
+								<h2>%= lista[i].nombre_producto %></h2>
+								<p>%= lista[i].descripcion_producto %></p>
+								<p>Comentarios:  %= lista[i].comentario.length %> </p>
 							</article>
 						</a>
 					</section>
 				</div>
-				<% }  
+				% }  
 				%>
 			</div>
-		</div>
+		</div> -->
 	<!-- /Más vistos -->
 
 	<%- include('./partials/footer') %>

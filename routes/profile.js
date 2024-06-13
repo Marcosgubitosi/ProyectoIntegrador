@@ -63,7 +63,8 @@ router.get('/id/:user_id', profileController.profile)
 router.get('/login', profileController.login)
 router.post('/login', loginValidations, profileController.processLogin);
 
-router.get('/profileEdit', profileController.profileEdit)
+router.get('/profileEdit/:userId', profileController.profileEdit)
+router.post('/profileEdit/:userId', registerValidations, profileController.processProfileEdit)
 
 router.get('/register', profileController.register)
 router.post('/register', registerValidations, profileController.processRegister);

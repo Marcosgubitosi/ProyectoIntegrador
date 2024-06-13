@@ -131,7 +131,7 @@ const productController = {
                 comentario: form.comment
             })
                 .then(function () {
-                    return res.redirect('/')
+                    return res.redirect(`/product/id/${idd}`)
                 })
                 .catch(function (error) {
                     return console.log(error);
@@ -177,14 +177,19 @@ const productController = {
         } else {
             datos.Producto.findByPk(idd, filtrado)
             .then(function (producto) {
-                //res.send(producto)
-                res.render('product-edit', { info: producto })
+                // res.send(producto)
+                if (req.session.user.id == producto.usuario_id) {
+                    return res.render('product-edit', {info: producto })
+                } else{
+                    res.send('No podes editar un producto que no sea tuyo')
+                }
             })
             .catch(function (error) {
                 return console.log(error);
             });
     }},
     processProductEdit: function (req, res) {
+        
         let idd = req.params.productId
         let form = req.body;
         let errors = validationResult(req);

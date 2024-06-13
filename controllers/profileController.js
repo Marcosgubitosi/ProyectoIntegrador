@@ -49,10 +49,64 @@ const profileController = {
                  });
     },
     profileEdit: function (req, res) {
-        return res.render('profile-edit', {
-            lista: datos,
-        })
+        let idd = req.params.userId
+        if (req.session.user === undefined) {
+            //return res.send("tenes que logearte para poder editar tu perfil")
+            return res.redirect('/profile/login')
+        } else {
+            datos.Usuario.findByPk(idd)
+            .then(function (user) {
+                // res.send(user)
+                if (req.session.user.id == user.id) {
+                    return res.render('profile-edit', {info: user })
+                } else{
+                    res.send('No podes editar un perfil ajeno al tuyo')
+                }
+            })
+            .catch(function (error) {
+                return console.log(error);
+            });
+    }
     },
+    processProfileEdit: function (req,res){
+        let idd = req.params.userId
+        let form = req.body;
+        let errors = validationResult(req);
+        // res.send(errors)
+            if (errors.isEmpty()) {
+                let passencriptada = bcrypt.hashSync(form.contrasenia, 10);
+                form.contrasenia = passencriptada
+                datos.Usuario.update({
+                    email: form.email,
+                    nombre_usuario: form.nombre_usuario,
+                    contrasenia: form.contrasenia,
+                    fecha_nacimiento: form.fecha_nacimiento,
+                    dni: form.dni,
+                    foto_perfil: form.foto_perfil
+                },{
+                    where:{id: idd}
+                })
+                    .then(function () {
+                        return res.redirect(`/profile/id/${idd}`);
+                    })
+                    .catch(error => console.log(error))
+            } else {
+                datos.Usuario.findByPk(idd)
+                .then(function (user) {
+                    if (req.session.user.id == user.id) {
+                        return res.render('profile-edit', {
+                            info: user ,
+                            errors: errors.mapped()
+                        })
+                    } else{
+                        res.send('No podes editar un perfil ajeno al tuyo')
+                    }
+                })
+                .catch(function (error) {
+                    return console.log(error);
+                });
+            }
+},
     login: function (req, res) {
         if (req.session.user === undefined) {
             return res.render('login', { error: null });

@@ -6,12 +6,14 @@ const indexController = {
         include: [
             {association: "usuario"},
             {association: "comentario"}
-        ]
+        ],
+        order: [['createdAt', 'DESC']],
+        limit: 4
     }
     datos.Producto.findAll(filtrado)
     .then(function (results){
         // console.log(results);
-        //return res.send(results)
+        // return res.send(results)
         return res.render('index', {lista: results})
     })
     .catch(function (error) {
