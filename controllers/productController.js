@@ -1,7 +1,8 @@
 //const datos = require('../db/index');
 const datos = require("../database/models");
-const { Association } = require('sequelize')
+const { Association, where } = require('sequelize')
 const { validationResult } = require('express-validator')
+const op = datos.Sequelize.Op;
 
 const productController = {
     detalle: function (req, res) {
@@ -35,12 +36,13 @@ const productController = {
                     include: [{ association: "usuario" }]
                 }
             ],
-            where: [{ nombre_producto: queryString }]
+            where: [{ nombre_producto: {[op.like]: `%${queryString}%`}}]
         }
-        datos.Producto.findOne(filtrado)
+        datos.Producto.findAll(filtrado)
             .then(function (resultado) {
+                //res.send(resultado)
                 //console.log(resultado)
-                if (resultado != undefined) {
+                if (resultado.length > 0) {
                     return res.render('search-results', { datos: resultado })
                 } else {
                     return res.send("no hay resultados para su criterio de busqueda")
