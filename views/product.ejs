@@ -16,8 +16,8 @@
 			<p class="product-detail-description">
 			<% if (locals.user != undefined) { %>
 				<% if (locals.user.email == info.usuario.email) { %>
-				<a href="/product/add">Editar</a> 
-				<a href="/product/add">Borrar</a>
+				<a href="/product/edit/<%= info.producto_id %>">Editar</a> 
+				<a href="/product/edit/<%= info.producto_id %>">Borrar</a>
 				<% } %>
 			<% } %>
 			</p>

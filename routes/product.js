@@ -31,6 +31,9 @@ router.get('/todos', productController.todos)
 router.get('/add', productController.productAdd)
 router.post('/add', productValidations, productController.processProductAdd)
 
+router.get('/edit/:productId', productController.productEdit)
+router.post('/edit/:productId',productValidations, productController.processProductEdit)
+
 
 
 

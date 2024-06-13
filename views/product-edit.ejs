@@ -18,7 +18,7 @@
 			
 			<h2 class="col-12"> <i>///////////////////////////////////////// <br> 
 				<!--Evitamos que se rompa al mandarlo a una ruta-->
-				<form action="/product/add" method="POST" >
+				<form action="/product/edit/<%= info.producto_id %>" method="POST" >
 					<label for="imagen">Imagen:</label>
 					<input type="text" id="imagen" name="imagen" value="<%= locals.old !== undefined && old.imagen ? old.imagen: "" %>"><br>
 					<% if (locals.errors && errors.imagen) { %>

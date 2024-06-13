@@ -64,6 +64,7 @@ const productController = {
         } else {
             datos.Producto.findAll(filtrado)
                 .then(function (results) {
+                    //return res.send(results)
                     return res.render('product-add', { productos: results })
                 })
                 .catch(function (error) {
@@ -120,7 +121,7 @@ const productController = {
     processComentario: function (req, res) {
         let idd = req.params.productId
         let form = req.body;
-        // res.send(form)
+        //res.send(idd)
         let errors = validationResult(req);
         // res.send(errors)
         if (errors.isEmpty()) {
@@ -158,6 +159,52 @@ const productController = {
                 });
         }
 
+    },
+    productEdit: function (req, res) {
+        let idd = req.params.productId
+        let filtrado = {
+            include: [
+                { association: "usuario" },
+                {
+                    association: "comentario",
+                    include: [{ association: "usuario" }]
+                }
+            ]
+        }
+        if (req.session.user === undefined) {
+            //return res.send("tenes que logearte para poder agregar productos")
+            return res.redirect('/profile/login')
+        } else {
+            datos.Producto.findByPk(idd, filtrado)
+            .then(function (producto) {
+                //res.send(producto)
+                res.render('product-edit', { info: producto })
+            })
+            .catch(function (error) {
+                return console.log(error);
+            });
+    }},
+    processProductEdit: function (req, res) {
+        let idd = req.params.productId
+        let form = req.body;
+        let errors = validationResult(req);
+        //res.send(idd)
+        if (errors.isEmpty()) {
+            datos.Producto.update({
+                usuario_id: req.session.user.id,
+                nombre_archivo_producto: form.imagen,
+                nombre_producto: form.nombre_producto,
+                descripcion_producto: form.descripcion,
+            },{
+                where:{producto_id: idd}
+            })
+                .then(function () {
+                    return res.redirect('/');
+                })
+                .catch(error => console.log(error))
+        } else {
+            res.render('product-edit', { errors: errors.mapped(), old: req.body });
+        }
     }
 
 }
