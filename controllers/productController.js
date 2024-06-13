@@ -123,7 +123,7 @@ const productController = {
         let form = req.body;
         //res.send(idd)
         let errors = validationResult(req);
-        // res.send(errors)
+        // res.send(errors.mapped())
         if (errors.isEmpty()) {
             datos.Comentario.create({
                 producto_id: idd,
