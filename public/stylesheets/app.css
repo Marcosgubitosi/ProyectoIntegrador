@@ -140,7 +140,7 @@ hr {
 }
 
 .logout:hover{
-  color: #1259c3;
+  color:  rgb(112, 4, 4);
 }
 
 .left-navbar a,
@@ -185,6 +185,7 @@ hr {
 
 .product-box a {
   display: block;
+  
 }
 
 .product-box_image {
@@ -323,6 +324,7 @@ hr {
 }
 
 .product-detail-description {
+  margin-top: 0px;
   padding: 15px 15px 15px 40px;
   font-size: 1.8em;
   line-height: 1.5;
@@ -377,6 +379,9 @@ hr {
   border-radius: 8px;
   border: none;
   margin-bottom: 15px;
+}
+.buy-now-button:hover{
+  background-color: #0a417c;
 }
 
 .action-button {
@@ -510,7 +515,7 @@ textarea.form-input {
 
   .left-navbar a:hover,
   .right-navbar a:hover {
-    color: var(--light-blue);
+    color: rgb(234, 117, 117);
   }
 
   .left-navbar li {

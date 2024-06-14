@@ -5,30 +5,34 @@
 	<%- include('./partials/header') %>
 	<!-- /Header -->
 
-	<!-- Novedades -->
 	<div class="container products-wrapper">
-		<div class="row">
+		<div class="login">
 			<div class="col-12">
-				<h2 class="products-title">Ingresar</h2>
+				<h2 class="login-title">Ingresar</h2>
 			</div>
 			<!--Evitamos que se rompa al mandarlo a una ruta-->
 			<h2 class="col-12">
-				<form action="/profile/login" method="POST">
-				<label for="email">Email:</label>
-				<input type="email" id="email" name="email" value="<%= locals.old !== undefined && old.email ? old.email: ""%>"><br>
+				<div class="lform-container">
+				<form class="lform" action="/profile/login" method="POST">
+				<!-- <label for="email">Email:</label> -->
+				<input class="linput" placeholder="Email" type="email" id="email" name="email" value="<%= locals.old !== undefined && old.email ? old.email: ""%>">
 				<% if (locals.errors && errors.email) { %>
 					<p class = 'error'>  <%= errors.email.msg %></p> <% } %>
 				
-				<label for="contrasenia">Contraseña:</label>
-				<input type="password" id="contrasenia" name="contrasenia" ><br>
+				<!-- <label for="contrasenia">Contraseña:</label> -->
+				<input class="linput" placeholder="Contraseña" type="password" id="contrasenia" name="contrasenia" >
 				<% if (locals.errors && errors.contrasenia) { %>
 					<p class = 'error'>  <%= errors.contrasenia.msg %></p> <% } %>
+				<div class="recontainer">
+				<label for="recordarme" class="reclabel">Recordarme</label>
+				<input type="checkbox" class="recinput" id="recordarme" name="recordarme"> <br>
+				</div>
+				
+				
 			
-				<input type="checkbox" id="recordarme" name="recordarme">
-				<label for="recordarme">Recordarme</label><br>
-			
-				<button type="submit">Iniciar Sesión</button>
+				<button class="boton" type="submit">Iniciar Sesión</button>
 			</form>
+		</div>
 			</h2>
 
 

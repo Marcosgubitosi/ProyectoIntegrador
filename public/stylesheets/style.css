@@ -29,7 +29,7 @@ a {
 
 .nombre {
   font: 40px 'Copperplate';
-  color: red
+  color: red;
 }
 
 .main-header_credit-link{
@@ -37,12 +37,88 @@ a {
 }
 
 .error {
-  color:red
+  color:red;
+  font-size: 14px;
+  margin-top: 0px;
 }
 
 .logout {
   color:red;
   font: 15px "Georgia"
 }
-
-
+.set{
+  font-size: 20px;
+}
+.login-title{
+  font-size: 2.4em;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+}
+.lform{
+  background-color: darkgray;
+  border-radius: 8px;
+  padding: 20px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.boton{
+    /* mismo que el de comentario */
+  background-color: rgb(222, 79, 79);
+  font-size: 1.6em;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 15px;
+}
+.boton:hover {
+  background-color: rgb(252, 1, 1); 
+}
+.linput{
+  /* mismo que el de comentario */
+  display: block;
+  width: 100%;
+  height: 45px;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  border-radius: 8px;
+  border: none;
+  border: solid 1px rgb(222, 79, 79);
+  padding: 0 15px;
+}
+.lform-container{
+  display: flex;
+  justify-content: center;
+  align-items: self-start;
+  height: 35vh;
+}
+.rform-container{
+  display: flex;
+  justify-content: center;
+  align-items: self-start;
+  height: 75vh;
+}
+.pform-container{
+  display: flex;
+  justify-content: center;
+}
+.recontainer{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  /* width: 100%; */
+}
+.reclabel{
+  font-size: 15px;
+}
+.recinput{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.pemail{
+  margin-left: 5px;
+}
