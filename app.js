@@ -44,14 +44,14 @@ app.use(function(req, res, next) {
      }
 return next();
 });
-app.use(function(req, res, next) {
-	if (req.session.product !== undefined) {
-    res.send(req.session.product)
-    res.locals.product = req.session.product
+// app.use(function(req, res, next) {
+// 	if (req.session.product !== undefined) {
+//     res.send(req.session.product)
+//     res.locals.product = req.session.product
     
-  }
-	return next();
-});
+//   }
+// 	return next();
+// });
 
 app.use('/', indexRouter);
 app.use('/index', indexRouter);

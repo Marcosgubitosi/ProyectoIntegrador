@@ -31,11 +31,13 @@ const productController = {
         let filtrado = {
             include: [
                 { association: "usuario" },
+                
                 {
                     association: "comentario",
                     include: [{ association: "usuario" }]
                 }
             ],
+            order: [['createdAt', 'DESC']],
             where: [{ nombre_producto: {[op.like]: `%${queryString}%`}}]
         }
         datos.Producto.findAll(filtrado)

@@ -89,6 +89,13 @@ const profileController = {
                 where: { id: idd }
             })
                 .then(function () {
+                    req.session.user = {
+                        email: form.email,
+                        nombre_usuario: form.nombre_usuario,
+                        fecha_nacimiento: form.fecha_nacimiento,
+                        dni: form.dni,
+                        foto_perfil: form.foto_perfil
+                    }
                     return res.redirect(`/profile/id/${idd}`);
                 })
                 .catch(error => console.log(error))
@@ -106,6 +113,13 @@ const profileController = {
                         where: { id: idd }
                     })
                         .then(function () {
+                            req.session.user = {
+                                email: form.email,
+                                nombre_usuario: form.nombre_usuario,
+                                fecha_nacimiento: form.fecha_nacimiento,
+                                dni: form.dni,
+                                foto_perfil: form.foto_perfil
+                            }
                             return res.redirect(`/profile/id/${idd}`);
                         })
                         .catch(error => console.log(error))
