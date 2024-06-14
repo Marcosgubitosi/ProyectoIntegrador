@@ -215,7 +215,7 @@ const productController = {
                 where:{producto_id: idd}
             })
                 .then(function () {
-                    return res.redirect('/');
+                    return res.redirect(`/product/id/${idd}`);
                 })
                 .catch(error => console.log(error))
         } else {
@@ -255,7 +255,7 @@ const productController = {
                     where:{producto_id: idd}
                     })
                     .then(function () {
-                        return res.redirect('/');
+                        return res.redirect(`/profile/id/${producto.usuario_id}`);
                     })
                     .catch(error => console.log(error))
             }else {
