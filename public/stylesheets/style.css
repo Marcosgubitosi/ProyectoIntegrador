@@ -72,10 +72,24 @@ a {
   padding: 15px;
   border-radius: 8px;
   border: none;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 .boton:hover {
   background-color: rgb(252, 1, 1); 
+}
+.p-boton{
+  background-color: rgb(106, 106, 106);
+  font-size: 1.6em;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 5px;
+  margin-right: 15px;
+  font-family: "Monaco";
+}
+.p-boton:hover {
+  background-color: rgb(0, 0, 0); 
 }
 .linput{
   /* mismo que el de comentario */
@@ -121,4 +135,8 @@ a {
 }
 .pemail{
   margin-left: 5px;
+}
+.p-botones{
+  display: flex;
+  align-items: center;
 }
