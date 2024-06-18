@@ -212,7 +212,7 @@ const profileController = {
                         foto_perfil: user.foto_perfil,
                     };
                     if (form.recordarme) {
-                        res.cookie('userEmail', user.email, { maxAge: 30 * 24 * 60 * 60 * 1000 });
+                        res.cookie('userId', user.id, { maxAge: 30 * 24 * 60 * 60 * 1000 });
                     }
                     return res.redirect('/');
 
@@ -228,7 +228,7 @@ const profileController = {
     },
     logout: function (req, res) {
         req.session.destroy();
-        res.clearCookie('userEmail')
+        res.clearCookie('userId')
         return res.redirect("/")
     }
 };

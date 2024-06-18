@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
-
+const datos = require("./database/models");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -30,12 +30,12 @@ app.use(session({
 	saveUninitialized: true 
 }));
 
-app.use(function(req, res, next) {
-	if (req.session.profile !== undefined) {
-    res.locals.register = req.session.profile
-  }
-	return next();
-});
+// app.use(function(req, res, next) {
+// 	if (req.session.profile !== undefined) {
+//     res.locals.register = req.session.profile
+//   }
+// 	return next();
+// });
 app.use(function(req, res, next) {
   if (req.session.user != undefined) {
     //res.send(req.session.user)
@@ -44,14 +44,27 @@ app.use(function(req, res, next) {
      }
 return next();
 });
-// app.use(function(req, res, next) {
-// 	if (req.session.product !== undefined) {
-//     res.send(req.session.product)
-//     res.locals.product = req.session.product
+
+app.use(function(req, res, next){
+  if(req.cookies.userId != undefined && req.session.user == undefined){
+    let u_id = req.cookies.userId;
+    console.log(u_id);
     
-//   }
-// 	return next();
-// });
+    datos.Usuario.findByPk(u_id)
+    .then(function(cookie){
+      
+      req.session.user = cookie;
+      res.locals.user = req.session.user;
+      return next()
+    })
+    .catch(function (error) {
+      return console.log(error);
+  });
+  }else{
+    return next()
+  }
+})
+
 
 app.use('/', indexRouter);
 app.use('/index', indexRouter);
