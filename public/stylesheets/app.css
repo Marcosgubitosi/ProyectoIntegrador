@@ -170,6 +170,12 @@ hr {
 }
 
 .products-title {
+  color: #39b54a;
+  font-size: 25px;
+  font-weight: 700;
+}
+.products-title-not {
+  color: red;
   font-size: 25px;
   font-weight: 700;
 }

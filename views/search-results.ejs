@@ -12,7 +12,12 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Resultados de búsqueda</h2>
+				<% if (datos.length > 0) { %>
+					<h2 class="products-title">Resultados de búsqueda para: <%= query %></h2>
+				<% }else{ %>
+					<h2 class="products-title-not">No se encontraron resultados para: <%= query %></h2>
+				<%} %>
+				
 			</div>
 			<% for (let i = 0; i < datos.length; i++) { %>
 			<div class="col-12 col-sm-6 col-lg-3">

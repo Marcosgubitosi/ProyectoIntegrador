@@ -44,11 +44,8 @@ const productController = {
             .then(function (resultado) {
                 //res.send(resultado)
                 //console.log(resultado)
-                if (resultado.length > 0) {
-                    return res.render('search-results', { datos: resultado })
-                } else {
-                    return res.send("no hay resultados para su criterio de busqueda")
-                }
+                return res.render('search-results', { datos: resultado, query: queryString })
+               
             })
 
     },
