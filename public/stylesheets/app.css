@@ -170,6 +170,10 @@ hr {
 }
 
 .products-title {
+  font-size: 25px;
+  font-weight: 700;
+}
+.products-title-busq {
   color: #39b54a;
   font-size: 25px;
   font-weight: 700;
