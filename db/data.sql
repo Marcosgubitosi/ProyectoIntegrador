@@ -5,9 +5,10 @@ use proyectoIntegrador;
 CREATE TABLE usuarios(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(50) NOT NULL,
-    contraseña VARCHAR (50) NOT NULL,
-    fecha_nacimiento DATE NOT NULL,
-    dni INT NOT NULL,
+    nombre_usuario VARCHAR(50),
+    contrasenia VARCHAR (100) NOT NULL,
+    fecha_nacimiento DATE,
+    dni INT,
     foto_perfil TEXT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -42,20 +43,20 @@ CREATE TABLE comentarios(
  
  select * from usuarios;
  
- INSERT INTO usuarios (id, email, contraseña, fecha_nacimiento, dni, foto_perfil)
- VALUES (DEFAULT, 'armandorojas@gmail.com', 'Arma2804', '1987-04-28', 30789323, 'https://i.pinimg.com/474x/70/85/54/7085548f3d0372a08aea0291ddcee895.jpg');
+ INSERT INTO usuarios (id, email, nombre_usuario, contrasenia, fecha_nacimiento, dni, foto_perfil)
+ VALUES (DEFAULT, 'armandorojas@gmail.com', 'ArmandoRojas', 'Arma2804', '1987-04-28', 30789323, 'https://i.pinimg.com/474x/70/85/54/7085548f3d0372a08aea0291ddcee895.jpg');
  
- INSERT INTO usuarios (id, email, contraseña, fecha_nacimiento, dni, foto_perfil)
- VALUES (DEFAULT, 'juanroman@gmail.com', 'Roman2402', '1979-02-24', 26735526, 'https://i.pinimg.com/474x/70/85/54/7085548f3d0372a08aea0291ddcee895.jpg');
+ INSERT INTO usuarios (id, email, nombre_usuario, contrasenia, fecha_nacimiento, dni, foto_perfil)
+ VALUES (DEFAULT, 'juanroman@gmail.com', 'JuanRoman', 'Roman2402', '1979-02-24', 26735526, 'https://i.pinimg.com/474x/70/85/54/7085548f3d0372a08aea0291ddcee895.jpg');
  
-INSERT INTO usuarios (id, email, contraseña, fecha_nacimiento, dni, foto_perfil)
-VALUES (DEFAULT, 'sarah123@gmail.com', 'Sarah1508', '1990-08-15', 34567890, 'https://i.pinimg.com/474x/70/85/54/7085548f3d0372a08aea0291ddcee895.jpg');
+INSERT INTO usuarios (id, email, nombre_usuario, contrasenia, fecha_nacimiento, dni, foto_perfil)
+VALUES (DEFAULT, 'sarah123@gmail.com','Sarah', 'Sarah1508', '1990-08-15', 34567890, 'https://i.pinimg.com/474x/70/85/54/7085548f3d0372a08aea0291ddcee895.jpg');
 
-INSERT INTO usuarios (id, email, contraseña, fecha_nacimiento, dni, foto_perfil)
-VALUES (DEFAULT, 'john_doe@gmail.com', 'Doe1005', '1985-05-10', 29875901, 'https://i.pinimg.com/474x/70/85/54/7085548f3d0372a08aea0291ddcee895.jpg');
+INSERT INTO usuarios (id, email, nombre_usuario, contrasenia, fecha_nacimiento, dni, foto_perfil)
+VALUES (DEFAULT, 'john_doe@gmail.com', 'JohnDoe', 'Doe1005', '1985-05-10', 29875901, 'https://i.pinimg.com/474x/70/85/54/7085548f3d0372a08aea0291ddcee895.jpg');
 
-INSERT INTO usuarios (id, email, contraseña, fecha_nacimiento, dni, foto_perfil)
-VALUES (DEFAULT, 'emily_smith@gmail.com', 'Smith3011', '1982-11-30', 28654321, 'https://i.pinimg.com/474x/70/85/54/7085548f3d0372a08aea0291ddcee895.jpg');
+INSERT INTO usuarios (id, email, nombre_usuario, contrasenia, fecha_nacimiento, dni, foto_perfil)
+VALUES (DEFAULT, 'emily_smith@gmail.com','EmSmith' ,'Smith3011', '1982-11-30', 28654321, 'https://i.pinimg.com/474x/70/85/54/7085548f3d0372a08aea0291ddcee895.jpg');
 
 
 select * from productos;
