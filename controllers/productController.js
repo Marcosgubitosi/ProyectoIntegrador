@@ -39,7 +39,7 @@ const productController = {
                 }
             ],
             order: [['createdAt', 'DESC']],
-            where: [{ nombre_producto: {[op.like]: `%${queryString}%`}}]
+            where: {[op.or]: [{ nombre_producto: {[op.like]: `%${queryString}%`}},{ descripcion_producto: {[op.like]: `%${queryString}%`}}]}
         }
         datos.Producto.findAll(filtrado)
             .then(function (resultado) {
