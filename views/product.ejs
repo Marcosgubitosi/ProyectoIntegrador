@@ -35,7 +35,7 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<%  for( let i = 0; i < info.comentario.length; i++ ) { %>
+						<%  for( let i = (info.comentario.length - 1); i > -1; i-- ) { %>
 							<article>
 								<a href="/profile/id/<%= info.comentario[i].usuario.id %>"><img src="<%= info.comentario[i].usuario.foto_perfil %>" alt=""></a>
 								<div class="data">

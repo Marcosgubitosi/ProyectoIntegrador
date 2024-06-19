@@ -13,6 +13,7 @@ const productController = {
                 {
                     association: "comentario",
                     include: [{ association: "usuario" }]
+                    
                 }
             ]
         }
