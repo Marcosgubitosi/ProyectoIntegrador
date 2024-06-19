@@ -7,28 +7,6 @@ const { validationResult } = require('express-validator')
 
 const profileController = {
     profile: function (req, res) {
-        // if (req.cookies.userEmail && !req.session.user) {
-        //     datos.Usuario.findOne({
-        //         where: { email: req.cookies.userEmail }
-        //     })
-        //         .then(function (user) {
-        //             req.session.user = {
-        //                 email: user.email,
-        //                 nombre_usuario: user.nombre_usuario,
-        //                 fecha_nacimiento: user.fecha_nacimiento,
-        //                 dni: user.dni,
-        //                 foto_perfil: user.foto_perfil,
-        //             }
-        //             res.send(user)
-        //             // return res.render('profile', { user: req.session.user });
-        //         })
-        //         .catch(function (error) {
-        //             return console.log(error);
-        //         });
-        // } else {
-        //     res.send(datos.Usuario)
-        //     // res.render('profile', { user: req.session.user });
-        // }
         let idd = req.params.user_id;
         let filtrado = {
             include: [
