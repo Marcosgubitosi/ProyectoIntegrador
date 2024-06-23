@@ -1,6 +1,5 @@
 //const datos = require('../db/index');
 const datos = require("../database/models");
-const { Association, where } = require('sequelize')
 const { validationResult } = require('express-validator')
 const op = datos.Sequelize.Op;
 
