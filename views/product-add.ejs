@@ -21,6 +21,7 @@
 				<div class="pform-container">
 					<form class="lform" action="/product/add" method="POST" >
 						<!-- <label for="imagen">Imagen:</label> -->
+						 <!-- PUEDEN PONER UNA FOTO DE GOOGLE (COPY/PASTE IMAGE ADDRESS) -->
 						<input placeholder="Imagen" class="linput" type="text" id="imagen" name="imagen" value="<%= locals.old !== undefined && old.imagen ? old.imagen: "" %>"><br>
 						<% if (locals.errors && errors.imagen) { %>
 						<p class = 'error'>  <%= errors.imagen.msg %></p> <% } %>

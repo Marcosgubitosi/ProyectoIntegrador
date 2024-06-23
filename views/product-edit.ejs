@@ -21,6 +21,7 @@
 				<div class="pform-container">
 				<form class="lform" action="/product/edit/<%= info.producto_id %>" method="POST" >
 					<label for="imagen">Imagen:</label>
+					<!-- PUEDEN PONER UNA FOTO DE GOOGLE (COPY/PASTE IMAGE ADDRESS) -->
 					<input class="linput" type="text" id="imagen" name="imagen" value="<%= info.nombre_archivo_producto %>"><br>
 					<% if (locals.errors && errors.imagen) { %>
 					<p class = 'error'>  <%= errors.imagen.msg %></p> <% } %>

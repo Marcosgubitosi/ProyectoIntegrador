@@ -99,7 +99,8 @@ const productController = {
             include: [
                 { association: "usuario" },
                 { association: "comentario" }
-            ]
+            ],
+            order: [['createdAt', 'DESC']]
         })
             .then(function (results) {
                 return res.render('todosproductos', { productos: results });
@@ -108,20 +109,6 @@ const productController = {
                 console.log(error);
             });
     },
-    // comentario: function(req,res){
-    //     if(req.session.user === undefined) {
-    //         //return res.send("tenes que logearte para poder agregar comentarios")
-    //         return res.redirect('/profile/login')
-    //     }else{
-    //     datos.Producto.findAll()
-    //     .then(function (results){
-    //         return res.render('product', {productos: results})
-    //     })
-    //     .catch(function (error) {
-    //         return console.log(error);;
-    //     });
-    // }
-    // },
     processComentario: function (req, res) {
         let idd = req.params.productId
         let form = req.body;

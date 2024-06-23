@@ -11,7 +11,6 @@
 			<div class="col-12">
 				<h2 class="login-title">Registrate</h2>
 			</div>
-			<!--Evitamos que se rompa al mandarlo a una ruta-->
 			<h2 class="col-12">
 				<div class="rform-container">
 				<form class="lform" action="/profile/register" method="POST" class="registration-form">
@@ -42,6 +41,7 @@
 					<label for="dni">Nro de documento:</label>
 					<input class="linput" type="number" id="dni" name="dni" value="<%= locals.old !== undefined && old.dni ? old.dni: ""%>"><br>
 			
+					<!-- PUEDEN PONER UNA FOTO DE GOOGLE (COPY/PASTE IMAGE ADDRESS) -->
 					<label for="foto_perfil">Foto de perfil:</label>
 					<input class="linput" type="text" id="foto_perfil" name="foto_perfil"><br>
 
